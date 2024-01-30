@@ -13,6 +13,7 @@ from ...chain.aerial.tx import Transaction
 from ...chain.aerial.tx_helpers import SubmittedTx
 from ...chain.aerial.client import LedgerClient, NetworkConfig
 from ...chain.aerial.client.utils import prepare_and_broadcast_basic_transaction
+from ...chain.aerial.config import NetworkConfig
 
 class Post:
     def __init__(
@@ -43,7 +44,14 @@ class Post:
         '''
 
         wallet = subaccount.wallet
-        network = NetworkConfig.fetch_dydx_testnet()
+        network = NetworkConfig(
+            chain_id=self.config.chain_id,
+            url=f"grpc+https://{self.config.grpc_endpoint}",
+            fee_minimum_gas_price=4630550000000000,
+            fee_denomination=self.config.denom,
+            staking_denomination="self.config.denom",
+            faucet_url="",
+        )
         ledger = LedgerClient(network)
         tx = Transaction()
         tx.add_message(msg)
