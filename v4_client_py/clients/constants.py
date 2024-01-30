@@ -107,10 +107,12 @@ class ValidatorConfig:
         grpc_endpoint: str,
         chain_id: str,
         ssl_enabled: bool,
+        denom=None,
     ):
         self.grpc_endpoint = grpc_endpoint
         self.chain_id = chain_id
         self.ssl_enabled = ssl_enabled
+        self.denom = denom
 
 
 class Network:
