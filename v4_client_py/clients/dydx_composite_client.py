@@ -164,6 +164,7 @@ class CompositeClient:
         self,
         subaccount: Subaccount,
         market: str,
+        order_type: OrderType,
         side: OrderSide,
         price: float,
         size: float,
@@ -207,7 +208,7 @@ class CompositeClient:
         msg = self.place_short_term_order_message(
             subaccount=subaccount,
             market=market,
-            type=type,
+            type=order_type,
             side=side,
             price=price,
             size=size,
